@@ -46,6 +46,8 @@ set ambiwidth=double
 set wildmenu
 " 省略されずに表示
 set display=lastline
+" バッファスクロール
+set mouse=a
 
 
 " Tab系
