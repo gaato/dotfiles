@@ -14,6 +14,8 @@ set showcmd
 
 
 " 見た目系
+" タイトルを表示
+set title
 " 行番号を表示
 set number
 " 現在の行を強調表示
@@ -32,22 +34,31 @@ set showmatch
 set laststatus=2
 " コマンドラインの補完
 set wildmode=list:longest
-" 折り返し時に表示行単位での移動できるようにする
-nnoremap j gj
-nnoremap k gk
+" 行をまたいで移動
+set whichwrap=b,s,h,l,<,>,[,],~
 " シンタックスハイライトの有効化
 syntax enable
+" 挿入モードでバックスペースで削除できるようにする
+set backspace=indent,eol,start
+" 全角文字専用の設定
+set ambiwidth=double
+" wildmenuオプションを有効(vimバーからファイルを選択できる)
+set wildmenu
+" 省略されずに表示
+set display=lastline
 
 
 " Tab系
-" 不可視文字を可視化(タブが「▸-」と表示される)
-set list listchars=tab:\▸\-
 " Tab文字を半角スペースにする
 set expandtab
 " 行頭以外のTab文字の表示幅（スペースいくつ分）
-set tabstop=2
+set tabstop=4
 " 行頭でのTab文字の表示幅
-set shiftwidth=2
+set shiftwidth=4
+" タブ文字を CTRL-I で表示し、行末に $ で表示する
+set list
+" 行末のスペースを可視化
+set listchars=tab:^\ ,trail:~
 
 
 " 検索系
