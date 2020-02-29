@@ -48,6 +48,10 @@ set wildmenu
 set display=lastline
 " バッファスクロール
 set mouse=a
+" バッファを複数的な設定(?)
+set hidden
+" タブの表示
+set showtabline=2
 
 
 " Tab系
