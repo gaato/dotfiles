@@ -2,13 +2,13 @@
 "文字コードをUFT-8に設定
 set fenc=utf-8
 " バックアップファイルを作らない
-set nobackup
+"set nobackup
 " スワップファイルを作らない
 set noswapfile
 " 編集中のファイルが変更されたら自動で読み直す
-set autoread
+"set autoread
 " バッファが編集中でもその他のファイルを開けるように
-set hidden
+"set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
 
@@ -43,15 +43,13 @@ set backspace=indent,eol,start
 " 全角文字専用の設定
 set ambiwidth=double
 " wildmenuオプションを有効(vimバーからファイルを選択できる)
-set wildmenu
+"set wildmenu
 " 省略されずに表示
-set display=lastline
+"set display=lastline
 " バッファスクロール
 set mouse=a
-" バッファを複数的な設定(?)
-set hidden
 " タブの表示
-set showtabline=2
+"set showtabline=2
 
 
 " Tab系
