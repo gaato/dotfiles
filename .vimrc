@@ -6,9 +6,9 @@ set fenc=utf-8
 " スワップファイルを作らない
 set noswapfile
 " 編集中のファイルが変更されたら自動で読み直す
-"set autoread
+set autoread
 " バッファが編集中でもその他のファイルを開けるように
-"set hidden
+set hidden
 " 入力中のコマンドをステータスに表示する
 set showcmd
 
@@ -45,7 +45,7 @@ set ambiwidth=double
 " wildmenuオプションを有効(vimバーからファイルを選択できる)
 "set wildmenu
 " 省略されずに表示
-"set display=lastline
+set display=lastline
 " バッファスクロール
 set mouse=a
 " タブの表示
