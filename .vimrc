@@ -94,7 +94,7 @@ nnoremap - '
 nnoremap _ "
 
 nnoremap ; z
-nnoremap : Z
+nnoremap : ZZ
 nnoremap q x
 nnoremap Q X
 nnoremap j c
