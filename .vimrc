@@ -75,10 +75,12 @@ nnoremap + }
 nnoremap o s
 nnoremap O S
 nnoremap e d
+nnoremap ee dd
 nnoremap E D
 nnoremap u f
 nnoremap U F
 nnoremap i g
+nnoremap ii gg
 nnoremap I G
 nnoremap d h
 nnoremap D H
@@ -94,10 +96,14 @@ nnoremap - '
 nnoremap _ "
 
 nnoremap ; z
+nnoremap ;; zz
+nnoremap ;y zt
 nnoremap : Z
+nnoremap :: ZZ
 nnoremap q x
 nnoremap Q X
 nnoremap j c
+nnoremap jj cc
 nnoremap J C
 nnoremap k v
 nnoremap K V
@@ -113,7 +119,7 @@ nnoremap z /
 nnoremap Z ?
 
 " auto reload .vimrc
-augroup source-vimrc
+augroup surce-vimrc
   autocmd!
   autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
   autocmd BufWritePost *gvimrc if has('gui_running') source $MYGVIMRC
