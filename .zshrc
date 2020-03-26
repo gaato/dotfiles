@@ -8,4 +8,6 @@ compinit -u
 # prompt
 PROMPT='%m@%n %F{6}%~%f$ '
 
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
