@@ -96,10 +96,14 @@ nnoremap - '
 nnoremap _ "
 
 nnoremap ; z
+<<<<<<< HEAD
 nnoremap ;; zz
 nnoremap ;y zt
 nnoremap : Z
 nnoremap :: ZZ
+=======
+nnoremap : ZZ
+>>>>>>> e55b59672ad4cdb16b50d991ccf23e64a28d0775
 nnoremap q x
 nnoremap Q X
 nnoremap j c
