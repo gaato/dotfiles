@@ -42,87 +42,31 @@ set hlsearch
 " ESC連打でハイライト解除
 nmap <Esc><Esc> :nohlsearch<CR><Esc>
 
-nnoremap [ -
-nnoremap { _
-nnoremap ] =
-nnoremap } +
-
-nnoremap ' q
-nnoremap " Q
-nnoremap , w
-nnoremap < W
-nnoremap . e
-nnoremap > E
-nnoremap p r
-nnoremap P R
-nnoremap y t
-nnoremap Y T
-nnoremap f y
-nnoremap F Y
-nnoremap g u
-nnoremap G U
-nnoremap c i
-nnoremap C I
-nnoremap r o
-nnoremap R O
-nnoremap l p
-nnoremap L P
-nnoremap / [
-nnoremap ? {
-nnoremap = ]
-nnoremap + }
-
-nnoremap o s
-nnoremap O S
-nnoremap e d
-nnoremap ee dd
-nnoremap E D
-nnoremap u f
-nnoremap U F
-nnoremap i g
-nnoremap ii gg
-nnoremap I G
-nnoremap d h
-nnoremap D H
-nnoremap h j
-nnoremap H J
-nnoremap t k
-nnoremap T K
+nnoremap t j
+nnoremap c k
 nnoremap n l
-nnoremap N L
-nnoremap s ;
-nnoremap S :
-nnoremap - '
-nnoremap _ "
-
-nnoremap ; z
-<<<<<<< HEAD
-nnoremap ;; zz
-nnoremap ;y zt
-nnoremap : Z
-nnoremap :: ZZ
-=======
-nnoremap : ZZ
->>>>>>> e55b59672ad4cdb16b50d991ccf23e64a28d0775
-nnoremap q x
-nnoremap Q X
 nnoremap j c
-nnoremap jj cc
-nnoremap J C
-nnoremap k v
-nnoremap K V
-nnoremap x b
-nnoremap X B
-nnoremap b n
-nnoremap B N
-nnoremap w ,
-nnoremap W <
-nnoremap v .
-nnoremap V >
-nnoremap z /
-nnoremap Z ?
+nnoremap k t
+nnoremap l n
 
-" auto reload .vimrc
+inoremap <C-j> <Esc>
+inoremap <C-n> <Left>
+
+call plug#begin()
+Plug 'easymotion/vim-easymotion'
+Plug 'cohama/lexima.vim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
+
+map <Leader>f <Plug>(easymotion-bd-f)
+nmap <Leader>f <Plug>(easymotion-overwin-f)
+
+map <Leader>w <Plug>(easymotion-bd-w)
+nmap <Leader>w <Plug>(easymotion-overwin-w)
+
+let g:EasyMotion_do_mappnig = 0
+
+"auto reload .vimrc
 augroup surce-vimrc
   autocmd!
   autocmd BufWritePost *vimrc source $MYVIMRC | set foldmethod=marker
