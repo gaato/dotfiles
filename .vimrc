@@ -65,7 +65,6 @@ map <Leader>w <Plug>(easymotion-bd-w)
 nmap <Leader>w <Plug>(easymotion-overwin-w)
 
 let g:EasyMotion_do_mappnig = 0
-
 "auto reload .vimrc
 augroup surce-vimrc
   autocmd!
