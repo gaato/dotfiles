@@ -1,4 +1,5 @@
 #!/bin/sh
 ln -sf ~/dotfiles/.vimrc ~/.vimrc
 ln -sf ~/dotfiles/.zshrc ~/.zshrc
-ln -sf ~/dotfiles/nvim ~/.config/nvim
+ln -sf ~/dotfiles/init.vim ~/.config/nvim/init.vim
+ln -sf ~/dotfiles/coc-settings.json ~/.config/nvim/coc-settings.json
