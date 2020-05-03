@@ -59,6 +59,7 @@ call plug#begin()
 Plug 'easymotion/vim-easymotion'
 Plug 'cohama/lexima.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'alaviss/nim.nvim'
 call plug#end()
 
 map <Leader>f <Plug>(easymotion-bd-f)
