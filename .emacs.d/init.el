@@ -59,9 +59,7 @@
 
 (electric-pair-mode 1)
 
-(scroll-bar-mode -1)
 (menu-bar-mode -1)
-(toggle-scroll-bar -1)
 (tool-bar-mode -1)
 
 
@@ -201,10 +199,6 @@
 
 ;; design
 
-
-(nyan-mode t)
-(nyan-start-animation)
-(nyan-toggle-wavy-trail)
 
   (use-package doom-themes
     :custom
