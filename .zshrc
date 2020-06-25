@@ -1,7 +1,23 @@
-# zsh-completions(補完機能)の設定
-if [ -e /usr/local/share/zsh-completions ]; then
-    fpath=(/usr/local/share/zsh-completions $fpath)
-fi
+export LANG=ja_JP.UTF-8
+
+#大文字小文字を区別しない補完
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+
+#histry
+HISTFILE="~/.zsh_history "
+HISTSIZE=1000
+SAVEHIST=1000
+setopt extended_history #ヒストリに実行時間も保存
+
+#コマンドのスペルを訂正する
+# setopt correct
+
+# <Tab>でパス名の補完候補を表示したあと、
+# 続けて<Tab>を押すと候補からパス名を選択することができるようになる
+zstyle ':completion:*:default' menu select=1
+
+autoload colors
+zstyle ':completion:*' list-colors "${LS_COLORS}"
 
 
 autoload -Uz vcs_info
@@ -9,11 +25,10 @@ setopt prompt_subst
 zstyle ':vcs_info:*' formats '[%F{green}%b%f]'
 zstyle ':vcs_info:*' actionformats '[%F{green}%b%f(%F{red}%a%f)]'
 precmd() { vcs_info }
-PROMPT='[%n@%m]${vcs_info_msg_0_} %{${fg[yellow]}%}%~%{${reset_color}%}
-%F{green}٩(ˊᗜˋ*)و%f '
+PROMPT='[%n@%m]${vcs_info_msg_0_} %~
+%F{green}=^._.^=%f '
 RPROMPT=''
 
-function chpwd() { ls -l }
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
