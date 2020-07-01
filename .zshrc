@@ -3,8 +3,8 @@ export LANG=ja_JP.UTF-8
 #大文字小文字を区別しない補完
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
-#histry
-HISTFILE="~/.zsh_history "
+#history
+HISTFILE="~/.zsh_history"
 HISTSIZE=1000
 SAVEHIST=1000
 setopt extended_history #ヒストリに実行時間も保存
