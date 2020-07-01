@@ -25,8 +25,8 @@ setopt prompt_subst
 zstyle ':vcs_info:*' formats '[%F{green}%b%f]'
 zstyle ':vcs_info:*' actionformats '[%F{green}%b%f(%F{red}%a%f)]'
 precmd() { vcs_info }
-PROMPT='[%n@%m]${vcs_info_msg_0_} %~
-%F{green}=^._.^=%f '
+PROMPT='%K{235}[%n@%m][%F{cyan}%D{%H:%M}%f] %F{cyan}%~%f ${vcs_info_msg_0_}%k
+%k%F{green}=^._.^=%f '
 RPROMPT=''
 
 
