@@ -45,3 +45,6 @@ eval "$(pyenv init -)"
 alias e='emacs'
 alias activate="source $PYENV_ROOT/versions/anaconda3-2.5.0/bin/activate"
 eval $(thefuck --alias)
+
+
+fortune || true
