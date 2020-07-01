@@ -31,7 +31,7 @@ zstyle ':vcs_info:*' actionformats '[%b|%a]'
 precmd() { vcs_info }
 
 PROMPT='%K{235}[%n@%m] %F{cyan}%~%f ${vcs_info_msg_0_}%k
-%k%F{green}=^._.^=%f '
+%k%F{green}|ω･)%f '
 RPROMPT='%K{235}[%F{cyan}%D{%H:%M}%f]'
 
 
