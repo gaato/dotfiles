@@ -1,25 +1,50 @@
 export LANG=ja_JP.UTF-8
 
-#大文字小文字を区別しない補完
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 
 #history
-HISTFILE="~/.zsh_history"
+HISTFILE=$HOME/.zsh_history
 HISTSIZE=1000
 SAVEHIST=1000
 setopt extended_history #ヒストリに実行時間も保存
 
-#コマンドのスペルを訂正する
-# setopt correct
 
-# <Tab>でパス名の補完候補を表示したあと、
-# 続けて<Tab>を押すと候補からパス名を選択することができるようになる
-zstyle ':completion:*:default' menu select=1
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
+fi
 
-autoload colors
-zstyle ':completion:*' list-colors "${LS_COLORS}"
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+zinit ice pick'' blockf wait'0'
+zinit light zsh-users/zsh-completions
+
+zinit ice pick'' wait'0'
+zinit light zsh-users/zsh-autosuggestions
+
+zinit ice wait'1' lucid
+zinit light -b zdharma-continuum/history-search-multi-word
+
+zinit ice wait atinit'zpcompinit; zpcdreplay' lucid
+zinit light zdharma-continuum/fast-syntax-highlighting
+
+### End of Zinit's installer chunk
 
 
+# prompt
 autoload -Uz vcs_info
 setopt prompt_subst
 zstyle ':vcs_info:*' enable git
@@ -35,16 +60,36 @@ PROMPT='%K{235}[%n@%m] %F{cyan}%~%f ${vcs_info_msg_0_}%k
 RPROMPT='%K{235}[%F{cyan}%D{%H:%M}%f]'
 
 
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-export PATH=/Applications/Julia-1.4.app/Contents/Resources/julia/bin:$PATH
-export PATH=/Users/gart/.nimble/bin:$PATH
-export PATH=~/.local/bin:$PATH
-export PATH=/usr/local/opt/llvm/bin:$PATH
-eval "$(pyenv init -)"
-alias e='emacs'
-alias activate="source $PYENV_ROOT/versions/anaconda3-2.5.0/bin/activate"
-eval $(thefuck --alias)
+# opam configuration
+test -r ~/.opam/opam-init/init.zsh && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 
-# fortune || true
+# eval
+pyenv() {
+  unfunction "$0"
+  source <(pyenv init -)
+  $0 "$@"
+}
+fuck() {
+  unfunction "$0"
+  source <(thefuck --alias)
+  $0 "$@"
+}
+
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
+# alias
+case "${OSTYPE}" in
+darwin*)
+    alias ls="ls -G"
+    alias ll="ls -lG"
+    alias la="ls -laG"
+    ;;
+linux*)
+    alias ls='ls --color'
+    alias ll='ls -l --color'
+    alias la='ls -la --color'
+    ;;
+esac
