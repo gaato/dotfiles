@@ -68,8 +68,10 @@ test -r ~/.opam/opam-init/init.zsh && . ~/.opam/opam-init/init.zsh > /dev/null 2
 pyenv() {
   unfunction "$0"
   source <(pyenv init -)
+  if which pyenv-virtualenv-init > /dev/null; then source <(pyenv virtualenv-init -); fi
   $0 "$@"
 }
+
 fuck() {
   unfunction "$0"
   source <(thefuck --alias)
