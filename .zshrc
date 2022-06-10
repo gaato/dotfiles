@@ -29,21 +29,28 @@ zinit light-mode for \
   zdharma-continuum/zinit-annex-patch-dl \
   zdharma-continuum/zinit-annex-rust
 
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
+zinit light zsh-users/zsh-autosuggestions
+
+zinit light zsh-users/zsh-completions
 
 zinit light marlonrichert/zsh-autocomplete
-
-zinit light zsh-users/zsh-autosuggestions
 
 zinit light -b zdharma-continuum/history-search-multi-word
 
 zinit light zdharma-continuum/fast-syntax-highlighting
 
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+
 ### End of Zinit's installer chunk
 
 
 # prompt
+zstyle :prompt:pure:path color cyan
+
+
+# former prompt
+
 # autoload -Uz vcs_info
 # setopt prompt_subst
 # zstyle ':vcs_info:*' enable git
@@ -57,6 +64,10 @@ zinit light zdharma-continuum/fast-syntax-highlighting
 # PROMPT='%K{235}[%n@%m] %F{cyan}%~%f ${vcs_info_msg_0_}%k
 # %k%F{green}|ω･)%f '
 # RPROMPT='%K{235}[%F{cyan}%D{%H:%M}%f]'
+
+
+# ls colors
+export LSCOLORS=gxfxcxdxbxegedabagacad
 
 
 # opam configuration
