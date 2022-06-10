@@ -29,27 +29,34 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
+zinit ice pick"async.zsh" src"pure.zsh"
+zinit light sindresorhus/pure
+
 zinit light marlonrichert/zsh-autocomplete
+
+zinit light zsh-users/zsh-autosuggestions
+
 zinit light -b zdharma-continuum/history-search-multi-word
+
 zinit light zdharma-continuum/fast-syntax-highlighting
 
 ### End of Zinit's installer chunk
 
 
 # prompt
-autoload -Uz vcs_info
-setopt prompt_subst
-zstyle ':vcs_info:*' enable git
-zstyle ':vcs_info:git:*' check-for-changes true
-zstyle ':vcs_info:git:*' stagedstr "%F{yellow}"
-zstyle ':vcs_info:git:*' unstagedstr "%F{red}"
-zstyle ':vcs_info:*' formats "[%F{green}%c%u%b%f]"
-zstyle ':vcs_info:*' actionformats '[%b|%a]'
-precmd() { vcs_info }
+# autoload -Uz vcs_info
+# setopt prompt_subst
+# zstyle ':vcs_info:*' enable git
+# zstyle ':vcs_info:git:*' check-for-changes true
+# zstyle ':vcs_info:git:*' stagedstr "%F{yellow}"
+# zstyle ':vcs_info:git:*' unstagedstr "%F{red}"
+# zstyle ':vcs_info:*' formats "[%F{green}%c%u%b%f]"
+# zstyle ':vcs_info:*' actionformats '[%b|%a]'
+# precmd() { vcs_info }
 
-PROMPT='%K{235}[%n@%m] %F{cyan}%~%f ${vcs_info_msg_0_}%k
-%k%F{green}|ω･)%f '
-RPROMPT='%K{235}[%F{cyan}%D{%H:%M}%f]'
+# PROMPT='%K{235}[%n@%m] %F{cyan}%~%f ${vcs_info_msg_0_}%k
+# %k%F{green}|ω･)%f '
+# RPROMPT='%K{235}[%F{cyan}%D{%H:%M}%f]'
 
 
 # opam configuration
