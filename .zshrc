@@ -29,16 +29,8 @@ zinit light-mode for \
     zdharma-continuum/zinit-annex-patch-dl \
     zdharma-continuum/zinit-annex-rust
 
-zinit ice pick'' blockf wait'0'
-zinit light zsh-users/zsh-completions
-
-zinit ice pick'' wait'0'
-zinit light zsh-users/zsh-autosuggestions
-
-zinit ice wait'1' lucid
+zinit light marlonrichert/zsh-autocomplete
 zinit light -b zdharma-continuum/history-search-multi-word
-
-zinit ice wait atinit'zpcompinit; zpcdreplay' lucid
 zinit light zdharma-continuum/fast-syntax-highlighting
 
 ### End of Zinit's installer chunk
