@@ -82,6 +82,12 @@ pyenv() {
   $0 "$@"
 }
 
+goenv() {
+  unfunction "$0"
+  source <(goenv init -)
+  $0 "$@"
+}
+
 fuck() {
   unfunction "$0"
   source <(thefuck --alias)
