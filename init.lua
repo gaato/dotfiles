@@ -19,6 +19,7 @@ vim.o.tabstop = 5
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.number = true
+vim.cmd 'set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%'
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -256,6 +257,35 @@ require("lazy").setup({
                 on_attach = _G.lsp_onattach_func,
             }
         end
+    },
+    {
+        'lewis6991/gitsigns.nvim', -- Gitの行毎ステータス
+        event = 'VeryLazy',
+        config = {
+            numhl = true,
+            -- signcolumn = false,
+        }
+    },
+    'lambdalisue/nerdfont.vim',
+    {
+        'lambdalisue/fern.vim',
+        dependencies = 'lambdalisue/fern-renderer-nerdfont.vim',
+        config = function()
+            vim.api.nvim_set_var("fern#renderer", "nerdfont")
+            vim.api.nvim_set_var("fern#renderer#nerdfont#indent_markers", 1)
+            vim.keymap.set('n', '<C-n>', '<cmd>Fern . -drawer -toggle -reveal=% <cr>')
+        end
+    },
+    {
+        'lambdalisue/fern-hijack.vim',
+        dependencies = 'lambdalisue/fern.vim',
+    },
+    {
+        'lambdalisue/fern-git-status.vim',
+        dependencies = 'lambdalisue/fern.vim',
+    },
+    {
+        "tpope/vim-fugitive",
     },
     {
         "github/copilot.vim",
