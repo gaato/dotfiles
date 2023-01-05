@@ -1,3 +1,11 @@
+vim.o.tabstop = 5
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.number = true
+vim.cmd 'set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%'
+vim.cmd 'imap <silent><script><expr> <C-J> copilot#Accept("\\<CR>")'
+vim.cmd 'let g:copilot_no_tab_map = v:true'
+
 function _G.lsp_onattach_func(_, bufnr)
     vim.api.nvim_create_user_command('Implementation', function() vim.lsp.buf.implementation() end, { force = true })
     local bufopts = { silent = true, buffer = bufnr }
@@ -15,12 +23,6 @@ function _G.lsp_onattach_func(_, bufnr)
     })
 end
 
-vim.o.tabstop = 5
-vim.o.shiftwidth = 4
-vim.o.expandtab = true
-vim.o.number = true
-vim.cmd 'set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%'
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system({
@@ -35,53 +37,9 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-    {
-        "navarasu/onedark.nvim",
-        config = function()
-            require "onedark".setup()
-            require "onedark".load()
-        end,
-    },
+    -- completion
     {
         "cohama/lexima.vim",
-    },
-    {
-        'numToStr/Comment.nvim', -- コメントのトグル
-        config = true,
-    },
-    {
-        'nvim-treesitter/nvim-treesitter', -- Treesitter
-        config = function()
-            local parser_install_dir = vim.fn.stdpath 'data' .. '/treesitter'
-            vim.opt.runtimepath:append(vim.fn.stdpath 'data' .. '/treesitter')
-            require 'nvim-treesitter.configs'.setup {
-                parser_install_dir = parser_install_dir,
-                highlight = {
-                    enable = true,
-                    additional_vim_regex_highlighting = false,
-                },
-                auto_install = true,
-            }
-            vim.wo.foldmethod = 'expr'
-            vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
-            vim.wo.foldenable = false
-            vim.wo.foldlevel = 999
-        end
-    },
-    {
-        'lukas-reineke/indent-blankline.nvim', -- インデントの可視化
-        dependencies = 'nvim-treesitter/nvim-treesitter',
-        event = 'VeryLazy',
-        config = function()
-            vim.opt.list = true
-            vim.api.nvim_set_var('indent_blankline_indent_level', 4)
-            vim.api.nvim_set_var('indent_blankline_use_treesitter', true)
-            require 'indent_blankline'.setup {
-                space_char_blankline = ' ',
-                show_current_context = true,
-                show_current_context_start = true,
-            }
-        end,
     },
     {
         "hrsh7th/nvim-cmp",
@@ -183,6 +141,124 @@ require("lazy").setup({
     { 'hrsh7th/cmp-path', dependencies = 'hrsh7th/nvim-cmp', event = 'InsertCharPre' },
     { 'hrsh7th/cmp-buffer', dependencies = 'hrsh7th/nvim-cmp', event = { 'InsertCharPre', 'CmdlineEnter' } },
     {
+        "github/copilot.vim",
+    },
+
+    -- ui
+    {
+        "navarasu/onedark.nvim",
+        config = function()
+            require "onedark".setup()
+            require "onedark".load()
+        end,
+    },
+    {
+        'lukas-reineke/indent-blankline.nvim', -- インデントの可視化
+        dependencies = 'nvim-treesitter/nvim-treesitter',
+        event = 'VeryLazy',
+        config = function()
+            vim.opt.list = true
+            vim.api.nvim_set_var('indent_blankline_indent_level', 4)
+            vim.api.nvim_set_var('indent_blankline_use_treesitter', true)
+            require 'indent_blankline'.setup {
+                space_char_blankline = ' ',
+                show_current_context = true,
+                show_current_context_start = true,
+            }
+        end,
+    },
+    {
+        'lewis6991/gitsigns.nvim', -- Gitの行毎ステータス
+        event = 'VeryLazy',
+        config = {
+            numhl = true,
+            -- signcolumn = false,
+        }
+    },
+    'lambdalisue/nerdfont.vim',
+    {
+        'lambdalisue/fern.vim',
+        dependencies = 'lambdalisue/fern-renderer-nerdfont.vim',
+        config = function()
+            vim.api.nvim_set_var("fern#renderer", "nerdfont")
+            vim.api.nvim_set_var("fern#renderer#nerdfont#indent_markers", 1)
+            vim.keymap.set('n', '<C-n>', '<cmd>Fern . -drawer -toggle -reveal=% <cr>')
+        end
+    },
+    {
+        'lambdalisue/fern-hijack.vim',
+        dependencies = 'lambdalisue/fern.vim',
+    },
+    {
+        'lambdalisue/fern-git-status.vim',
+        dependencies = 'lambdalisue/fern.vim',
+    },
+    {
+        'akinsho/bufferline.nvim',
+        tag = 'v3.*',
+        requires = 'nvim-tree/nvim-web-devicons',
+        config = function()
+            require('bufferline').setup {
+                options = {
+                    numbers = 'none',
+                    number_style = 'superscript',
+                    mappings = true,
+                    buffer_close_icon = '',
+                    modified_icon = '',
+                    close_icon = '',
+                    left_trunc_marker = '',
+                    right_trunc_marker = '',
+                    max_name_length = 18,
+                    max_prefix_length = 15,
+                    tab_size = 18,
+                    diagnostics = 'nvim_lsp',
+                    diagnostics_indicator = function(count, level, diagnostics_dict, context)
+                        local s = ' '
+                        for e, n in pairs(diagnostics_dict) do
+                            local sym = e == 'error' and ' '
+                                or (e == 'warning' and ' ' or '')
+                            s = s .. n .. sym
+                        end
+                        return s
+                    end,
+                    show_buffer_close_icons = false,
+                    show_close_icon = false,
+                    show_tab_indicators = true,
+                    persist_buffer_sort = true,
+                    separator_style = 'thin',
+                    enforce_regular_tabs = false,
+                    always_show_bufferline = true,
+                    sort_by = 'id',
+                }
+            }
+        end
+    },
+
+    -- tools
+    {
+        'numToStr/Comment.nvim', -- コメントのトグル
+        config = true,
+    },
+    {
+        'nvim-treesitter/nvim-treesitter', -- Treesitter
+        config = function()
+            local parser_install_dir = vim.fn.stdpath 'data' .. '/treesitter'
+            vim.opt.runtimepath:append(vim.fn.stdpath 'data' .. '/treesitter')
+            require 'nvim-treesitter.configs'.setup {
+                parser_install_dir = parser_install_dir,
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
+                auto_install = true,
+            }
+            vim.wo.foldmethod = 'expr'
+            vim.wo.foldexpr = 'nvim_treesitter#foldexpr()'
+            vim.wo.foldenable = false
+            vim.wo.foldlevel = 999
+        end
+    },
+    {
         'williamboman/mason.nvim', -- LSP Installer
         dependencies = {
             'williamboman/mason-lspconfig.nvim',
@@ -259,35 +335,6 @@ require("lazy").setup({
         end
     },
     {
-        'lewis6991/gitsigns.nvim', -- Gitの行毎ステータス
-        event = 'VeryLazy',
-        config = {
-            numhl = true,
-            -- signcolumn = false,
-        }
-    },
-    'lambdalisue/nerdfont.vim',
-    {
-        'lambdalisue/fern.vim',
-        dependencies = 'lambdalisue/fern-renderer-nerdfont.vim',
-        config = function()
-            vim.api.nvim_set_var("fern#renderer", "nerdfont")
-            vim.api.nvim_set_var("fern#renderer#nerdfont#indent_markers", 1)
-            vim.keymap.set('n', '<C-n>', '<cmd>Fern . -drawer -toggle -reveal=% <cr>')
-        end
-    },
-    {
-        'lambdalisue/fern-hijack.vim',
-        dependencies = 'lambdalisue/fern.vim',
-    },
-    {
-        'lambdalisue/fern-git-status.vim',
-        dependencies = 'lambdalisue/fern.vim',
-    },
-    {
         "tpope/vim-fugitive",
-    },
-    {
-        "github/copilot.vim",
     },
 })
