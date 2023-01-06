@@ -5,6 +5,17 @@ vim.o.number = true
 vim.cmd 'set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%'
 vim.cmd 'imap <silent><script><expr> <C-J> copilot#Accept("\\<CR>")'
 vim.cmd 'let g:copilot_no_tab_map = v:true'
+vim.keymap.set('i', '<c-f>', '<c-g>U<right>', {})
+vim.keymap.set('i', '<c-b>', '<c-g>U<left>', {})
+vim.keymap.set('i', '<c-p>', '<c-g>U<up>', {})
+vim.keymap.set('i', '<c-n>', '<c-g>U<down>', {})
+vim.keymap.set('i', '<c-d>', '<c-g>U<del>', {})
+vim.cmd [[ inoremap <expr> <c-a> col('.') == match(getline('.'), '\S') + 1 ?
+         \ repeat('<C-G>U<Left>', col('.') - 1) :
+         \ (col('.') < match(getline('.'), '\S') ?
+         \     repeat('<C-G>U<Right>', match(getline('.'), '\S') + 0) :
+         \     repeat('<C-G>U<Left>', col('.') - 1 - match(getline('.'), '\S')))]]
+vim.cmd [[ inoremap <expr> <c-e> repeat('<C-G>U<Right>', col('$') - col('.')) ]]
 
 function _G.lsp_onattach_func(_, bufnr)
     vim.api.nvim_create_user_command('Implementation', function() vim.lsp.buf.implementation() end, { force = true })
