@@ -2,9 +2,9 @@ vim.o.tabstop = 5
 vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.number = true
-vim.cmd 'set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:%'
-vim.cmd 'imap <silent><script><expr> <C-J> copilot#Accept("\\<CR>")'
-vim.cmd 'let g:copilot_no_tab_map = v:true'
+vim.cmd [[ set list listchars=tab:»-,trail:-,eol:↲,extends:»,precedes:«,nbsp:% ]]
+vim.cmd [[ imap <silent><script><expr> <C-J> copilot#Accept("\<CR>") ]]
+vim.cmd [[ let g:copilot_no_tab_map = v:true ]]
 vim.keymap.set('i', '<c-f>', '<c-g>U<right>', {})
 vim.keymap.set('i', '<c-b>', '<c-g>U<left>', {})
 vim.keymap.set('i', '<c-p>', '<c-g>U<up>', {})
