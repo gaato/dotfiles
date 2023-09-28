@@ -14,9 +14,7 @@ source ~/Repos/znap/znap.zsh  # Start Znap
 
 # Plugins
 znap source mafredri/zsh-async
-znap source aoyama-val/zsh-romaji-complete
 znap source zsh-users/zsh-autosuggestions
-# znap source marlonrichert/zsh-autocomplete
 znap source zsh-users/zsh-completions
 znap source zdharma-continuum/history-search-multi-word
 znap source zdharma-continuum/fast-syntax-highlighting
@@ -32,7 +30,7 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 test -r ~/.opam/opam-init/init.zsh && . ~/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 
 # eval
-source <(pyenv init -)
+eval "$(pyenv init -)"
 eval "$(goenv init -)"
 
 fuck() {
