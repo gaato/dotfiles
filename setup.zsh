@@ -23,7 +23,7 @@ create_symlink() {
 }
 
 # List of files and directories to include
-include=(".zshrc" ".vimrc" ".nanorc" "nvim/init.lua" "wezterm/wezterm.lua")
+include=(".zshrc" ".vimrc" ".nanorc" ".config/nvim/init.lua" ".config/wezterm/wezterm.lua")
 
 # Path to the dotfiles directory
 dotfiles_dir="$PWD"
