@@ -46,15 +46,7 @@ znap source johannchangpro/zsh-interactive-cd
 # Environment Variables
 # ------------------------------------------
 export LANG=en_US.UTF-8
-
-# ------------------------------------------
-# ls Color Configuration
-# ------------------------------------------
 export LSCOLORS=gxfxcxdxbxegedabagacad
-
-# ------------------------------------------
-# Editor Configuration
-# ------------------------------------------
 export EDITOR='nano'
 
 # ------------------------------------------
