@@ -1,0 +1,7 @@
+# Place environment specific settings here.
+# This file is ignored by git and is sourced from ~/.zshrc if present.
+# Example overrides for PATH or variables:
+# export PATH="$HOME/bin:$PATH"
+
+# You can also add additional configuration fragments by creating
+# "$HOME/.zshrc.d" and placing "*.zsh" files there.
