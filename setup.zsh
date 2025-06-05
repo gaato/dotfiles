@@ -23,7 +23,7 @@ create_symlink() {
 }
 
 # List of files and directories to include
-include=(".zshrc" ".vimrc" ".nanorc" ".config/nvim/init.lua" ".config/wezterm/wezterm.lua" ".config/doom/config.el" ".config/doom/init.el" ".config/doom/packages.el")
+include=(".zshrc" ".zshrc.d" ".vimrc" ".nanorc" ".config/nvim/init.lua" ".config/wezterm/wezterm.lua" ".config/doom/config.el" ".config/doom/init.el" ".config/doom/packages.el")
 
 # Path to the dotfiles directory
 dotfiles_dir="$PWD"
