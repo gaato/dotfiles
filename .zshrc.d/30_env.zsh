@@ -2,18 +2,10 @@
 export LANG=en_US.UTF-8
 export EDITOR='nano'
 
-# Env managers (conditional)
-if command -v pyenv >/dev/null; then
-    eval "$(pyenv init --path)"
-else
-    echo "pyenv not installed. See https://github.com/pyenv/pyenv#installation"
-fi
-
-if command -v goenv >/dev/null; then
-    eval "$(goenv init -)"
-else
-    echo "goenv not installed. See https://github.com/syndbg/goenv#installation"
-fi
+# Env managers (run only when installed)
+command -v pyenv >/dev/null && eval "$(pyenv init --path)"
+# Initialize goenv if available
+command -v goenv >/dev/null && eval "$(goenv init -)"
 
 # NVM
 export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/nvm"
