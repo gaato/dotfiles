@@ -1,0 +1,38 @@
+# Files and directories to ignore in chezmoi
+
+# Compiled zsh files
+**/*.zwc
+
+# Git repository (managed separately)
+.git/
+
+# Local configuration files
+.zshrc.local
+
+# Installation scripts (keep in source only)
+setup.zsh
+install.zsh
+README.md
+chezmoi.toml
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS specific files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Node modules
+node_modules/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo

@@ -1,0 +1,14 @@
+[edit]
+    command = "nano"
+
+[diff]
+    exclude = ["scripts"]
+
+[add]
+    filter = [
+        "!**/*.zwc",
+        "!**/.git/**",
+        "!**/node_modules/**",
+        "!**/.DS_Store",
+        "!**/*.log"
+    ]

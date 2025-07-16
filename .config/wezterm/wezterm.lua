@@ -9,13 +9,16 @@ return {
   }),
   font_size = 11.0,
   color_scheme = "iceberg-dark",
+  
+  -- DPI and scaling settings
+  dpi = nil, -- Let WezTerm auto-detect DPI
 
-  -- padding
+  -- padding (small padding can help with rendering on high-DPI)
   window_padding = {
-    left = 0,
-    right = 0,
-    top = 0,
-    bottom = 0,
+    left = 2,
+    right = 2,
+    top = 2,
+    bottom = 2,
   },
 
   -- tab bar
@@ -66,8 +69,12 @@ return {
     }
   },
 
-  -- background
-  window_background_opacity = 0.8,
+  -- background (reduced opacity for better stability on high-DPI)
+  window_background_opacity = 0.95,
+  
+  -- Additional stability settings for multi-monitor setups
+  enable_wayland = false, -- Disable if using Wayland and experiencing issues
+  front_end = "OpenGL", -- More stable than WebGpu on some systems
 
   -- key
   keys = {

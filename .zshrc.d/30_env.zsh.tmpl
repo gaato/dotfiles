@@ -1,9 +1,14 @@
 # Set basic environment
 export LANG=en_US.UTF-8
+{{- if eq .chezmoi.hostname "work-laptop" }}
+export EDITOR='code'
+{{- else }}
 export EDITOR='nano'
+{{- end }}
 
 # Env managers (run only when installed)
 command -v pyenv >/dev/null && eval "$(pyenv init --path)"
+
 # Initialize goenv if available
 command -v goenv >/dev/null && eval "$(goenv init -)"
 
@@ -28,3 +33,15 @@ elif command -v nvm >/dev/null 2>&1; then
 else
     echo "NVM not found. Install via package manager or see: https://github.com/nvm-sh/nvm#installing-and-updating"
 fi
+
+{{- if .personal }}
+# Personal environment settings
+export PERSONAL_PROJECTS="$HOME/Projects"
+export GITHUB_USER="gaato"
+{{- end }}
+
+{{- if .work }}
+# Work environment settings
+export WORK_PROJECTS="$HOME/Work"
+# Add work-specific environment variables here
+{{- end }}

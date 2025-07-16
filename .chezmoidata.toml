@@ -1,0 +1,6 @@
+# chezmoi configuration data
+# This file defines variables that can be used in templates
+
+[data]
+    personal = true
+    work = false
