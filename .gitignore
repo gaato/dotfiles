@@ -1,2 +1,22 @@
 # Local zsh configuration
 .zshrc.local
+
+# Generated files by chezmoi (keep templates, ignore generated)
+.zshrc.d/*.zsh
+!.zshrc.d/00_prompt.zsh
+!.zshrc.d/50_theme.zsh
+
+# Compiled zsh files
+.zshrc.d/*.zwc
+
+# OS specific
+.DS_Store
+Thumbs.db
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Logs
+*.log

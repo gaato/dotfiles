@@ -1,71 +1,182 @@
 # Dotfiles by @gaato
 
-This repository contains my personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
+This repository contains my personal dotfiles managed with [chezmoi](https://www.chezmoi.io/) for cross-platform configuration management.
 
-## Features
+## ✨ Features
 
-- **Zsh Configuration**: Modular zsh setup with plugins via znap
-- **Environment Management**: Support for pyenv, goenv, nvm
-- **Editor Configs**: Vim, Nano, Neovim configurations
-- **Terminal**: Wezterm configuration
+### 🚀 Dynamic Configuration
+- **OS Detection**: Automatic Linux/macOS/Windows configuration
+- **Environment Switching**: Personal/Work environment profiles
+- **Template System**: Dynamic config generation based on system info
+
+### 🔧 Managed Applications
+- **Zsh**: Modular configuration with znap plugin manager
+- **Development Tools**: pyenv, goenv, nvm auto-setup
+- **Editors**: Vim, Nano, Neovim configurations  
+- **Terminal**: Wezterm with custom themes
 - **Emacs**: Doom Emacs configuration
+- **Shell Enhancements**: fzf, powerlevel10k, syntax highlighting
 
-## Quick Start
+### 🎯 Smart Features
+- **Arch Linux Detection**: Auto-enables Arch-specific plugins
+- **Feature Toggles**: Enable/disable tools via configuration flags
+- **Template Variables**: User info, paths, preferences in one place
+
+## 🚀 Quick Start
 
 ### Prerequisites
 
-- **chezmoi**: Install chezmoi first
-  ```bash
-  # On Arch Linux
-  sudo pacman -S chezmoi
-  
-  # Or using the install script
-  sh -c "$(curl -fsLS get.chezmoi.io)"
-  ```
+Install chezmoi:
+```bash
+# Arch Linux
+sudo pacman -S chezmoi
+
+# Other systems
+sh -c "$(curl -fsLS get.chezmoi.io)"
+```
 
 ### Installation
 
-1. **Clone and initialize** (first time setup):
-   ```bash
-   chezmoi init --apply https://github.com/gaato/dotfiles.git
-   ```
-
-2. **Or use the provided script**:
-   ```bash
-   git clone https://github.com/gaato/dotfiles.git
-   cd dotfiles
-   ./install.zsh init
-   ```
-
-### Usage
-
-#### Management Commands
-
+#### Method 1: Direct chezmoi setup
 ```bash
-# Check what would be changed
-chezmoi diff
-
-# Apply changes
-chezmoi apply
-
-# Update from repository
-chezmoi update
-
-# Check status
-chezmoi status
-
-# Edit a file (opens in configured editor)
-chezmoi edit ~/.zshrc
+chezmoi init --apply https://github.com/gaato/dotfiles.git
 ```
 
-#### Using the install script
+#### Method 2: Using install script
+```bash
+git clone https://github.com/gaato/dotfiles.git
+cd dotfiles
+./install.zsh init
+```
+
+## 🔧 Management
+
+### Daily Commands
+```bash
+# Check status
+./install.zsh status
+
+# See what would change  
+./install.zsh diff
+
+# Apply updates
+./install.zsh update
+
+# Full re-initialization
+./install.zsh init
+```
+
+### Advanced chezmoi usage
+```bash
+# Edit configuration data
+chezmoi edit-config-template
+
+# Add new files
+chezmoi add ~/.newfile
+
+# Interactive diff and apply
+chezmoi diff
+chezmoi apply
+```
+
+## 📁 Repository Structure
+
+```
+dotfiles/
+├── .chezmoidata.toml          # Configuration variables
+├── .chezmoiignore            # Files to ignore  
+├── .zshrc                    # Main zsh configuration
+├── .zshrc.d/                 # Modular zsh configs
+│   ├── 00_prompt.zsh         # Prompt configuration
+│   ├── 10_znap_plugins.zsh.tmpl  # Plugin management (template)
+│   ├── 20_fzf.zsh.tmpl       # FZF configuration (template)
+│   ├── 30_env.zsh.tmpl       # Environment setup (template)
+│   ├── 40_history_aliases.zsh.tmpl  # History & aliases (template)
+│   └── 50_theme.zsh          # Theme configuration
+├── .config/                  # Application configurations
+│   ├── doom/                 # Doom Emacs config
+│   ├── nvim/                 # Neovim config
+│   └── wezterm/              # Terminal config
+├── install.zsh               # Installation & management script
+└── run_once_after_install.sh.tmpl  # Post-install setup (template)
+```
+
+## ⚙️ Configuration
+
+### Environment Variables (.chezmoidata.toml)
+
+Customize your setup by editing the configuration variables:
+
+```toml
+# Environment type
+personal = true          # Enable personal configurations
+work = false            # Enable work-specific settings
+
+# Feature flags  
+use_p10k = true         # Enable Powerlevel10k prompt
+use_fzf = true          # Enable fuzzy finder
+use_znap = true         # Enable znap plugin manager
+use_nvm = true          # Enable Node.js version manager
+use_pyenv = true        # Enable Python version manager
+use_goenv = true        # Enable Go version manager
+
+# User information (used in templates)
+name = "Your Name"
+email = "your.email@example.com"
+github_username = "yourusername"
+```
+
+### Adding New Files
 
 ```bash
-# Apply dotfiles
-./install.zsh apply
+# Add a new file to chezmoi management
+chezmoi add ~/.newconfig
 
-# Update from repository
-./install.zsh update
+# Add a template file
+chezmoi add --template ~/.config/app/config.yaml
+
+# Add executable script
+chezmoi add --executable ~/bin/script.sh
+```
+
+### Troubleshooting
+
+#### Reset and re-apply
+```bash
+rm -rf ~/.local/share/chezmoi
+./install.zsh init
+```
+
+#### Check what chezmoi would do
+```bash
+chezmoi diff --verbose
+```
+
+#### Manual template testing
+```bash
+chezmoi execute-template '{{ .use_fzf }}'
+```
+
+## 🔄 Migration from Symlinks
+
+This repository was migrated from a symlink-based system to chezmoi templates. The migration:
+
+1. ✅ Replaced static configs with dynamic templates
+2. ✅ Added OS/environment detection
+3. ✅ Implemented feature toggles
+4. ✅ Maintained modular structure
+5. ✅ Added automated setup scripts
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [chezmoi](https://www.chezmoi.io/) - Dotfiles management
+- [znap](https://github.com/marlonrichert/zsh-snap) - Zsh plugin manager  
+- [Powerlevel10k](https://github.com/romkatv/powerlevel10k) - Zsh theme
+- [Doom Emacs](https://github.com/doomemacs/doomemacs) - Emacs configuration
 
 # Show differences
 ./install.zsh diff

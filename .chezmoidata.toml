@@ -1,6 +1,34 @@
 # chezmoi configuration data
 # This file defines variables that can be used in templates
 
-[data]
-    personal = true
-    work = false
+# Environment type
+personal = true
+work = false
+
+# User information
+name = "Gakuto Furuya"
+email = "g.furuya@gaato.net"
+github_username = "gaato"
+
+# Development preferences
+editor = "nano"
+browser = "google-chrome-stable"
+terminal = "wezterm"
+
+# Path configurations
+projects_dir = "~/Projects"
+work_dir = "~/Work"
+dotfiles_repo = "https://github.com/gaato/dotfiles.git"
+
+# Feature flags
+use_p10k = true
+use_fzf = true
+use_znap = true
+use_nvm = true
+use_pyenv = true
+use_goenv = true
+
+# Network settings (customize per machine)
+proxy_enabled = false
+proxy_host = ""
+proxy_port = ""
