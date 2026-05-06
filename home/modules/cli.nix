@@ -5,6 +5,7 @@
     fastfetch
     fd
     firefox
+    gh
     ghq
     jq
     mise
