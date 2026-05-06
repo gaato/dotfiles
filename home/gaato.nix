@@ -4,7 +4,10 @@
   imports = [
     ./modules/cli.nix
     ./modules/fish.nix
+    ./modules/fonts.nix
     ./modules/git.nix
+    ./modules/plasma.nix
+    ./modules/theme.nix
   ];
 
   home.username = "gaato";
