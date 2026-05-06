@@ -6,6 +6,7 @@
     ./modules/fish.nix
     ./modules/fonts.nix
     ./modules/git.nix
+    ./modules/konsole.nix
     ./modules/plasma.nix
     ./modules/theme.nix
   ];
