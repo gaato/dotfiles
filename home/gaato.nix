@@ -7,8 +7,10 @@
     ./modules/fonts.nix
     ./modules/git.nix
     ./modules/konsole.nix
+    ./modules/mozc.nix
     ./modules/plasma.nix
     ./modules/theme.nix
+    ./modules/user-dirs.nix
   ];
 
   home.username = "gaato";
