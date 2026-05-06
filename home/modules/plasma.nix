@@ -60,5 +60,7 @@ in
       library = "org.kde.kwin.aurorae";
       theme = "__aurorae__svg__CatppuccinLatte-Modern";
     };
+
+    configFile.kwinrc.Wayland.InputMethod = "org.fcitx.Fcitx5.desktop";
   };
 }
