@@ -21,7 +21,7 @@ in
 
     fonts = {
       general = {
-        family = "Noto Sans";
+        family = "BIZTER";
         pointSize = 10;
       };
       fixedWidth = {
@@ -29,19 +29,19 @@ in
         pointSize = 10;
       };
       menu = {
-        family = "Noto Sans";
+        family = "BIZTER";
         pointSize = 10;
       };
       small = {
-        family = "Noto Sans";
+        family = "BIZTER";
         pointSize = 8;
       };
       toolbar = {
-        family = "Noto Sans";
+        family = "BIZTER";
         pointSize = 10;
       };
       windowTitle = {
-        family = "Noto Sans";
+        family = "BIZTER";
         pointSize = 10;
       };
     };
