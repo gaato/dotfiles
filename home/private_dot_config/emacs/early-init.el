@@ -15,9 +15,9 @@
 (push '(tool-bar-lines . 0) default-frame-alist)
 (push '(vertical-scroll-bars . nil) default-frame-alist)
 
-;; 起動時の白フラッシュ対策(catppuccin mocha の base/text)
-(push '(background-color . "#1e1e2e") default-frame-alist)
-(push '(foreground-color . "#cdd6f4") default-frame-alist)
+;; 起動時のフラッシュ対策(catppuccin latte の base/text)
+(push '(background-color . "#eff1f5") default-frame-alist)
+(push '(foreground-color . "#4c4f69") default-frame-alist)
 
 (setq frame-inhibit-implied-resize t)
 (setq inhibit-startup-screen t)

@@ -9,7 +9,7 @@
 ;; テーマ
 (use-package catppuccin-theme
   :config
-  (setq catppuccin-flavor 'mocha)
+  (setq catppuccin-flavor 'latte)
   (load-theme 'catppuccin :no-confirm))
 
 ;; フォント: HackGen35 Console NF(JP + Nerd Font グリフ入り)
@@ -74,6 +74,18 @@
 ;; 括弧をパステルに
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
+
+;; モードラインを Nyan Cat が横断する(doom-modeline では misc-info 経由で表示)
+(use-package nyan-mode
+  :custom
+  (nyan-animate-nyancat t)
+  (nyan-wavy-trail t)
+  (nyan-bar-length 24)
+  :config
+  (nyan-mode 1)
+  (add-to-list 'mode-line-misc-info
+               '(:eval (when (and nyan-mode (display-graphic-p))
+                         (list (nyan-create))))))
 
 ;; ジャンプ時にカーソルがぽわっと光る
 (use-package pulsar
