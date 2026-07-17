@@ -40,6 +40,14 @@
 (use-package treemacs-magit
   :after (treemacs magit))
 
+;; herdr のエージェントたちを Emacs から観測・操作する(自作パッケージ)
+;; TODO: GitHub 公開後は :vc (:url "https://github.com/gaato/herdr.el") に切り替える
+(use-package herdr
+  :if (file-directory-p "~/ghq/github.com/gaato/herdr.el")
+  :ensure nil
+  :load-path "~/ghq/github.com/gaato/herdr.el"
+  :bind ("C-c h" . herdr))
+
 ;; project.el: ghq 配下のリポジトリを見つけやすくする
 (use-package project
   :ensure nil
