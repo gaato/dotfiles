@@ -1,0 +1,10 @@
+#!/bin/sh
+# 公開リポジトリなので push 前に秘密情報の混入を検査する
+set -e
+if command -v gitleaks >/dev/null 2>&1; then
+    exec gitleaks git --no-banner "$(git rev-parse --show-toplevel)"
+elif command -v mise >/dev/null 2>&1; then
+    exec mise x gitleaks -- gitleaks git --no-banner "$(git rev-parse --show-toplevel)"
+else
+    echo "pre-push: gitleaks が見つからないため検査をスキップ (mise install gitleaks)" >&2
+fi
