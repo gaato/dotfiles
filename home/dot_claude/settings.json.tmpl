@@ -18,7 +18,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "/home/gaato/.agents/hooks/bash-guard.sh",
+            "command": "test ! -x '{{ .chezmoi.homeDir }}/.agents/hooks/bash-guard.sh' || '{{ .chezmoi.homeDir }}/.agents/hooks/bash-guard.sh'",
             "timeout": 10
           }
         ]
@@ -30,7 +30,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash '/home/gaato/.claude/hooks/herdr-agent-state.sh' session",
+            "command": "test ! -f '{{ .chezmoi.homeDir }}/.claude/hooks/herdr-agent-state.sh' || bash '{{ .chezmoi.homeDir }}/.claude/hooks/herdr-agent-state.sh' session",
             "timeout": 10
           }
         ]
@@ -67,10 +67,8 @@
       }
     }
   },
-  "sandbox": {
-    "enabled": false
-  },
-  "skipDangerousModePermissionPrompt": true,
+  "effortLevel": "high",
   "skipWorkflowUsageWarning": true,
-  "theme": "auto"
+  "theme": "auto",
+  "switchModelsOnFlag": false
 }

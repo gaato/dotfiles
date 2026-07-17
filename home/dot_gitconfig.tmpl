@@ -1,0 +1,14 @@
+[user]
+	email = g.furuya@gaato.net
+	name = Gakuto Furuya
+	signingkey = {{ .chezmoi.homeDir }}/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[core]
+	excludesfile = {{ .chezmoi.homeDir }}/.config/git/ignore
+[gpg "ssh"]
+	allowedSignersFile = {{ .chezmoi.homeDir }}/.config/git/allowed_signers
+[include]
+	path = {{ .chezmoi.homeDir }}/.gitconfig.local

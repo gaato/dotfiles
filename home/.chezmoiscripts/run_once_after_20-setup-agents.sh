@@ -16,9 +16,15 @@ if [ ! -d "$AGENTS_DIR" ]; then
 fi
 
 # グローバル指示の symlink (正本は ~/.agents/AGENTS.md)
-mkdir -p "$HOME/.claude" "$HOME/.codex"
-ln -sfT "$AGENTS_DIR/AGENTS.md" "$HOME/.claude/CLAUDE.md"
-ln -sfT "$AGENTS_DIR/AGENTS.md" "$HOME/.codex/AGENTS.md"
+# ~/.agents が skills のインストール先としてだけ存在する環境では、存在しない
+# AGENTS.md へのリンクを作らない。
+if [ -f "$AGENTS_DIR/AGENTS.md" ]; then
+    mkdir -p "$HOME/.claude" "$HOME/.codex"
+    ln -sfT "$AGENTS_DIR/AGENTS.md" "$HOME/.claude/CLAUDE.md"
+    ln -sfT "$AGENTS_DIR/AGENTS.md" "$HOME/.codex/AGENTS.md"
+else
+    echo "==> $AGENTS_DIR/AGENTS.md がないためグローバル指示の symlink はスキップします"
+fi
 
 # スキルの symlink (~/.claude/skills/* → ~/.agents/skills/*)
 if [ -x "$AGENTS_DIR/scripts/check-skills.sh" ]; then
