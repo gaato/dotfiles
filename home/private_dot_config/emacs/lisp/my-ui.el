@@ -92,6 +92,15 @@
   :config
   (pulsar-global-mode 1))
 
+;; ミニマップ(VS Code の右端のあれ。常駐させず C-c m でトグル)
+(use-package minimap
+  :bind (("C-c m" . minimap-mode))
+  :custom
+  (minimap-window-location 'right)
+  (minimap-width-fraction 0.08)
+  (minimap-minimum-width 12)
+  (minimap-major-modes '(prog-mode)))
+
 ;; 行番号・カーソル行
 (add-hook 'prog-mode-hook #'display-line-numbers-mode)
 (add-hook 'conf-mode-hook #'display-line-numbers-mode)

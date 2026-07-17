@@ -22,6 +22,24 @@
   :hook ((magit-pre-refresh . diff-hl-magit-pre-refresh)
          (magit-post-refresh . diff-hl-magit-post-refresh)))
 
+;; ファイルツリー(VS Code のエクスプローラー相当)
+(use-package treemacs
+  :bind (("C-c t" . treemacs)
+         ("C-c T" . treemacs-select-window))
+  :custom
+  (treemacs-width 32)
+  :config
+  (treemacs-follow-mode 1)     ; 今開いているファイルをツリーが追従
+  (treemacs-filewatch-mode 1)  ; エージェントによるファイル作成・削除も即反映
+  (treemacs-git-mode 'deferred))
+
+(use-package treemacs-nerd-icons
+  :after treemacs
+  :config (treemacs-load-theme "nerd-icons"))
+
+(use-package treemacs-magit
+  :after (treemacs magit))
+
 ;; project.el: ghq 配下のリポジトリを見つけやすくする
 (use-package project
   :ensure nil
