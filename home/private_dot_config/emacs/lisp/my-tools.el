@@ -40,6 +40,13 @@
 (use-package treemacs-magit
   :after (treemacs magit))
 
+;; Emacs 内フル機能ターミナル(herdr-attach 用)
+(use-package vterm
+  :custom
+  (vterm-always-compile-module t)
+  (vterm-max-scrollback 10000)
+  :commands (vterm vterm-mode))
+
 ;; herdr のエージェントたちを Emacs から観測・操作する(自作パッケージ)
 ;; TODO: GitHub 公開後は :vc (:url "https://github.com/gaato/herdr.el") に切り替える
 (use-package herdr
