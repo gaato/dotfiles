@@ -1,0 +1,76 @@
+{
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "model": "fable",
+  "fallbackModel": [
+    "opus",
+    "default"
+  ],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "/home/gaato/.agents/hooks/bash-guard.sh",
+            "timeout": 10
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash '/home/gaato/.claude/hooks/herdr-agent-state.sh' session",
+            "timeout": 10
+          }
+        ]
+      }
+    ]
+  },
+  "enableWorkflows": true,
+  "enabledPlugins": {
+    "code-review@claude-plugins-official": true,
+    "context7@claude-plugins-official": true,
+    "daisyui@daisyui": true,
+    "frontend-design@claude-plugins-official": false,
+    "modern-web-guidance@googlechrome": true,
+    "stripe@claude-plugins-official": true,
+    "webwright@webwright": true
+  },
+  "extraKnownMarketplaces": {
+    "daisyui": {
+      "source": {
+        "source": "github",
+        "repo": "saadeghi/daisyui"
+      }
+    },
+    "googlechrome": {
+      "source": {
+        "source": "github",
+        "repo": "GoogleChrome/modern-web-guidance"
+      }
+    },
+    "webwright": {
+      "source": {
+        "source": "github",
+        "repo": "microsoft/Webwright"
+      }
+    }
+  },
+  "sandbox": {
+    "enabled": false
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "skipWorkflowUsageWarning": true,
+  "theme": "auto"
+}

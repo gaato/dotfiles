@@ -1,0 +1,20 @@
+[tools]
+"aqua:tailwindlabs/tailwindcss" = "latest"
+bitwarden = "latest"
+bun = "latest"
+chezmoi = "latest"
+claude = "latest"
+codex = "latest"
+deno = "latest"
+ghq = "latest"
+gitleaks = "latest"
+"github:microsoft/ghqr" = "latest"
+herdr = "latest"
+lazygit = "latest"
+"npm:@playwright/cli" = "latest"
+"npm:@steipete/oracle" = "0.15.1"
+"npm:vibium" = "latest"
+terraform = "latest"
+uv = "latest"
+wrangler = { version = "latest", allow_builds = ["esbuild", "sharp", "workerd"] }
+yt-dlp = { version = "latest", rename_exe = "yt-dlp" }

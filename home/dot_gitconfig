@@ -1,0 +1,12 @@
+[user]
+	email = g.furuya@gaato.net
+	name = Gakuto Furuya
+	signingkey = /home/gaato/.ssh/id_ed25519.pub
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
+[core]
+	excludesfile = /home/gaato/.config/git/ignore
+[gpg "ssh"]
+	allowedSignersFile = /home/gaato/.config/git/allowed_signers
