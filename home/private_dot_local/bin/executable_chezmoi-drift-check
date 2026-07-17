@@ -1,0 +1,23 @@
+#!/bin/sh
+# chezmoi 管理ファイルのドリフトを検出し、キャッシュと通知に出す
+# (systemd user timer chezmoi-drift.timer から毎日実行される)
+set -u
+
+if command -v chezmoi >/dev/null 2>&1; then
+    CHEZMOI="chezmoi"
+else
+    CHEZMOI="mise x chezmoi -- chezmoi"
+fi
+
+cache="${XDG_CACHE_HOME:-$HOME/.cache}/chezmoi-drift"
+status="$($CHEZMOI status 2>/dev/null)" || exit 0
+
+if [ -n "$status" ]; then
+    printf '%s\n' "$status" > "$cache"
+    n="$(printf '%s\n' "$status" | wc -l)"
+    notify-send -i preferences-desktop "dotfiles drift" \
+        "${n} ファイルが chezmoi 管理と乖離しています。エージェントで /dotfiles を実行して処理できます。" \
+        2>/dev/null || true
+else
+    rm -f "$cache"
+fi
