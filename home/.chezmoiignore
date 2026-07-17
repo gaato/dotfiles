@@ -1,0 +1,8 @@
+# Emacs が生成するものは管理しない (誤って chezmoi add ~/.config/emacs しても拾わない)
+.config/emacs/elpa
+.config/emacs/eln-cache
+.config/emacs/tree-sitter
+.config/emacs/var
+.config/emacs/etc
+.config/emacs/custom.el
+.config/emacs/auto-save-list
