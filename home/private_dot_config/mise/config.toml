@@ -29,3 +29,4 @@ yt-dlp = { version = "latest", rename_exe = "yt-dlp" }
 "go:golang.org/x/tools/gopls" = "latest"
 "github:stripe/stripe-cli" = "latest"
 "npm:@stalwartlabs/vandelay" = { version = "latest", allow_builds = ["@stalwartlabs/vandelay"], allow_low_downloads = true }
+"npm:@xdevplatform/xurl" = { version = "latest", allow_builds = ["@xdevplatform/xurl"] }
