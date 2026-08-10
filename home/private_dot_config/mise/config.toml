@@ -11,6 +11,7 @@ ghq = "latest"
 gitleaks = "latest"
 go = "latest"
 "github:cli/cli" = "latest"
+"github:router-for-me/CLIProxyAPI" = { version = "7.2.127", asset_pattern = "CLIProxyAPI_{{ version }}_linux_amd64.tar.gz" }
 "github:microsoft/ghqr" = "latest"
 herdr = "latest"
 lazygit = "latest"
