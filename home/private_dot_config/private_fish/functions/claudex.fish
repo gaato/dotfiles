@@ -5,6 +5,7 @@ function claudex --description 'Run Claude Code with Codex through local CLIProx
     set -lx ANTHROPIC_DEFAULT_SONNET_MODEL 'gpt-5.6-terra(high)'
     set -lx ANTHROPIC_DEFAULT_HAIKU_MODEL 'gpt-5.6-luna(medium)'
     set -lx CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC 1
+    set -lx CLAUDE_CODE_MAX_CONTEXT_TOKENS 1050000
 
     command claude --model 'gpt-5.6-sol(xhigh)' $argv
 end
