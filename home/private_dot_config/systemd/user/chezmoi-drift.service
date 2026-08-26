@@ -1,6 +1,0 @@
-[Unit]
-Description=chezmoi drift check
-
-[Service]
-Type=oneshot
-ExecStart=%h/.local/bin/chezmoi-drift-check
